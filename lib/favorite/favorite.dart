@@ -52,7 +52,7 @@ class FavoriteState extends State {
                     children: <Widget>[
                       new SizedBox(
                           width:300,
-                          height: 250,
+                          height: 200,
                           child: new Hero(
                               tag: datas[index].tag,
                               child: Image.network(
