@@ -115,15 +115,14 @@ void toAccountInfo(BuildContext context) {
 }
 
 void toFastFood(BuildContext context) {
-//  Navigator.of(context).push(new MaterialPageRoute(builder: (context) =>
-//      new FastFood())).then((value) {
-//        print("fastfood back data: $value");
-//      });
   Navigator.of(context).push(new MaterialPageRoute(builder: (context) =>
-      new FirstPage())).then((value) {
+      new FastFood())).then((value) {
         print("fastfood back data: $value");
       });
-
+//  Navigator.of(context).push(new MaterialPageRoute(builder: (context) =>
+//      new FirstPage())).then((value) {
+//        print("fastfood back data: $value");
+//      });
 }
 class RandomWordsState extends State<RandomWords> {
   final _suggestions = <WordPair>[];
