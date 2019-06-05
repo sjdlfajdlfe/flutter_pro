@@ -1,3 +1,6 @@
+/**
+ * 用户信息界面
+ */
 import 'package:flutter/material.dart';
 class AccountInfoPage extends StatelessWidget {
 
