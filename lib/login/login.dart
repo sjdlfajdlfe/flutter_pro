@@ -88,7 +88,8 @@ class LoginState extends State {
                         onPressed: () {
                           login(context);
                         },
-                        child: Text("登录", style: TextStyle(fontSize: 18)),
+                        color: Colors.green,
+                        child: Text("登录", style: TextStyle(fontSize: 18,color: Colors.white)),
                       ),
                     )),
               ],

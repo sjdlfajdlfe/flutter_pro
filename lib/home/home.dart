@@ -6,6 +6,7 @@ import 'package:flutter_pro/account/account_Info.dart';
 import 'package:flutter_pro/fastfood/fastfood.dart';
 import 'package:flutter_pro/test/page_anim.dart';
 import 'package:flutter_pro/test/container.dart';
+import 'package:flutter_pro/favorite/favorite.dart';
 import 'dart:async';
 
 class MyHomePage extends StatelessWidget {
@@ -51,6 +52,7 @@ class MyHomePage extends StatelessWidget {
                 ),
                 ListTile(title: Text('我喜欢的'), trailing: Icon(Icons.favorite),onTap: () {
                   //Scaffold.of(context).showSnackBar(new SnackBar(content: new Text("点击喜欢菜单")));
+                    toFavorite(context);
                 },),
                 ListTile(title: Text('我收藏的'), trailing: Icon(Icons.fastfood),onTap: () {
                   //Scaffold.of(context).showSnackBar(new SnackBar(content: new Text("点击收藏菜单")));
@@ -108,6 +110,14 @@ void toFastFood(BuildContext context) {
 //        print("fastfood back data: $value");
 //      });
 }
+
+void toFavorite(BuildContext context) {
+  Navigator.of(context).push(new MaterialPageRoute(builder: (context) =>
+  new FavoritePage())).then((value) {
+    print("favorite back data: $value");
+  });
+}
+
 class RandomWordsState extends State<RandomWords> {
   final _suggestions = <WordPair>[];
   final _biggerFont = const TextStyle(fontSize: 18.0);

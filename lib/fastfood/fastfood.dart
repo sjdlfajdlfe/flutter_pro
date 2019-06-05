@@ -2,7 +2,7 @@
  * 收藏界面
  */
 import 'package:flutter/material.dart';
-import 'package:flutter_pro/test/favorite_preview.dart';
+import 'package:flutter_pro/preview/favorite_preview.dart';
 class FastFood extends StatefulWidget {
 
   @override
