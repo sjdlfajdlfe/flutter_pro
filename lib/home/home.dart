@@ -300,10 +300,24 @@ PopupMenuButton _pop(BuildContext context) {
     onSelected: (value) {
       print("click index:$value");
       if (value == MenuTypes.A.index) {
-        Scaffold.of(context).showSnackBar(SnackBar(
-            content: Text(
-          "click A menu",
-        )));
+        // Scaffold.of(context).showSnackBar(SnackBar(
+        //     content: Text(
+        //   "click A menu",
+        // )));
+        showDialog(context: context,
+            child: SimpleDialog(
+          title: Text('对话框'),
+          children: <Widget>[
+            SimpleDialogOption(
+              onPressed: () {},
+              child: Text('第一行信息'),
+            ),
+            SimpleDialogOption(
+              onPressed: () {},
+              child: Text('第二行信息'),
+            )
+          ],
+        ));
       } else if (value == MenuTypes.B.index) {
         Scaffold.of(context).showSnackBar(SnackBar(
             content: Text(
