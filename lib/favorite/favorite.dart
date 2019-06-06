@@ -12,8 +12,6 @@ class FavoritePage extends StatefulWidget {
 }
 
 class FavoriteState extends State {
-  bool isVisible = true;
-
   @override
   Widget build(BuildContext context) {
     List<Favorite> datas = new List();
@@ -51,14 +49,14 @@ class FavoriteState extends State {
                   child: new Column(
                     children: <Widget>[
                       new SizedBox(
-                          width:300,
+                          width: 300,
                           height: 200,
                           child: new Hero(
                               tag: datas[index].tag,
                               child: Image.network(
                                 datas[index].url,
                               ))),
-                      new Container(child:Text(datas[index].time))
+                      new Container(child: Text(datas[index].time))
                     ],
                   ),
                   padding: EdgeInsets.all(10),
@@ -66,9 +64,10 @@ class FavoriteState extends State {
           }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          setState(() {
-            isVisible = !isVisible;
-          });
+          // showDialog(
+          //   context: context,
+          //   child: PopWindow(),
+          // );
         },
         tooltip: "显示隐藏",
         child: Icon(Icons.flip),

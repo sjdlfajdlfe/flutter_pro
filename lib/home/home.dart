@@ -11,9 +11,12 @@ import 'dart:async';
 
 class MyHomePage extends StatelessWidget {
   var color = TextStyle(color: Colors.white);
-  var code = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559738056100&di=3e8599cc90b96303cfab19bad244c693&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F07c6686e680086ee3c92eb48e10df3325832fac568d-uvzROb_fw658';
-  var avatar = 'http://sandbox-ugc.boochat.cn/avatar/2019/01/19/14/178d257b-386c-4a5a-b312-bcca13e086e1.png';
-  var bgImage = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559568860847&di=ccc79e16aa27e4f3f9cf659a6eefa99d&imgtype=0&src=http%3A%2F%2Ftc.sinaimg.cn%2Fmaxwidth.2048%2Ftc.service.weibo.com%2Fp%2Fimage_youjuke_com%2Fd6cda9b760bee1824645a825a1285edc.jpg';
+  var code =
+      'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559738056100&di=3e8599cc90b96303cfab19bad244c693&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F07c6686e680086ee3c92eb48e10df3325832fac568d-uvzROb_fw658';
+  var avatar =
+      'http://sandbox-ugc.boochat.cn/avatar/2019/01/19/14/178d257b-386c-4a5a-b312-bcca13e086e1.png';
+  var bgImage =
+      'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559568860847&di=ccc79e16aa27e4f3f9cf659a6eefa99d&imgtype=0&src=http%3A%2F%2Ftc.sinaimg.cn%2Fmaxwidth.2048%2Ftc.service.weibo.com%2Fp%2Fimage_youjuke_com%2Fd6cda9b760bee1824645a825a1285edc.jpg';
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -21,9 +24,7 @@ class MyHomePage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text('Flutter'),
-          actions: <Widget>[
-            SearchWidget()
-          ],
+          actions: <Widget>[SearchWidget()],
         ),
         body: TabBarView(
           children: <Widget>[
@@ -34,49 +35,66 @@ class MyHomePage extends StatelessWidget {
             new RandomWords()
           ],
         ),
-        floatingActionButton: FloatingActionButton(onPressed: () {
-
-        }, child: Text('Action')),
+        floatingActionButton:
+            FloatingActionButton(onPressed: () {}, child: Text('Action')),
         drawer: Drawer(
             child: ListView(
-              padding: EdgeInsets.all(0),
-              children: <Widget>[
-                UserAccountsDrawerHeader(accountEmail: Text('850170603@qq.com', style: color),accountName: Text('liuwenji', style: color),
-                  currentAccountPicture:
+          padding: EdgeInsets.all(0),
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+              accountEmail: Text('850170603@qq.com', style: color),
+              accountName: Text('liuwenji', style: color),
+              currentAccountPicture:
                   CircleAvatar(backgroundImage: NetworkImage(avatar)),
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: NetworkImage(bgImage)
-                      )
-                  ),
-                  onDetailsPressed: () {
-                      print("onDetailsPressed");
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      fit: BoxFit.cover, image: NetworkImage(bgImage))),
+              onDetailsPressed: () {
+                print("onDetailsPressed");
+              },
+              otherAccountsPictures: <Widget>[
+                new InkWell(
+                  child: Image.asset("images/add_icon_code.png"),
+                  onTap: () {
+                    print("jump scan code");
                   },
-                  otherAccountsPictures: <Widget>[new InkWell(child: Image.asset("images/add_icon_code.png"),onTap: () {
-                      print("jump scan code");
-                  },)],
-                ),
-                ListTile(title: Text('我喜欢的'), trailing: Icon(Icons.favorite),onTap: () {
-                  //Scaffold.of(context).showSnackBar(new SnackBar(content: new Text("点击喜欢菜单")));
-                    toFavorite(context);
-                },),
-                ListTile(title: Text('我收藏的'), trailing: Icon(Icons.fastfood),onTap: () {
-                  //Scaffold.of(context).showSnackBar(new SnackBar(content: new Text("点击收藏菜单")));
-                  toFastFood(context);
-                },),
-                Divider(),
-                ListTile(title: Text('个人信息'), trailing: Icon(Icons.face), onTap: () {
-                  toAccountInfo(context);
-                },),
+                )
               ],
-            )
-        ),
+            ),
+            ListTile(
+              title: Text('我喜欢的'),
+              trailing: Icon(Icons.favorite),
+              onTap: () {
+                //Scaffold.of(context).showSnackBar(new SnackBar(content: new Text("点击喜欢菜单")));
+                toFavorite(context);
+              },
+            ),
+            ListTile(
+              title: Text('我收藏的'),
+              trailing: Icon(Icons.fastfood),
+              onTap: () {
+                //Scaffold.of(context).showSnackBar(new SnackBar(content: new Text("点击收藏菜单")));
+                toFastFood(context);
+              },
+            ),
+            Divider(),
+            ListTile(
+              title: Text('个人信息'),
+              trailing: Icon(Icons.face),
+              onTap: () {
+                toAccountInfo(context);
+              },
+            ),
+          ],
+        )),
         bottomNavigationBar: Container(
           decoration: BoxDecoration(color: Colors.lightBlue),
           height: 60,
           child: TabBar(
             labelStyle: TextStyle(height: 0.5, fontSize: 12),
+            onTap: (index) {
+              print("tab click $index");
+            },
             tabs: <Widget>[
               Tab(icon: Icon(Icons.memory), text: 'A'),
               Tab(icon: Icon(Icons.money_off), text: 'B'),
@@ -101,15 +119,17 @@ void toAccountInfo(BuildContext context) {
 //      new AccountInfoPage())).then((data) {
 //        print("account info back result: $data");
 //  });
-  Navigator.push(context,new MaterialPageRoute(builder: (context) =>
-  new ContainerTest())).then((data) {
+  Navigator.push(context,
+          new MaterialPageRoute(builder: (context) => new ContainerTest()))
+      .then((data) {
     print("account info back result: $data");
   });
 }
 
 void toFastFood(BuildContext context) {
-  Navigator.of(context).push(new MaterialPageRoute(builder: (context) =>
-  new FastFood())).then((value) {
+  Navigator.of(context)
+      .push(new MaterialPageRoute(builder: (context) => new FastFood()))
+      .then((value) {
     print("fastfood back data: $value");
   });
 //  Navigator.of(context).push(new MaterialPageRoute(builder: (context) =>
@@ -119,8 +139,9 @@ void toFastFood(BuildContext context) {
 }
 
 void toFavorite(BuildContext context) {
-  Navigator.of(context).push(new MaterialPageRoute(builder: (context) =>
-  new FavoritePage())).then((value) {
+  Navigator.of(context)
+      .push(new MaterialPageRoute(builder: (context) => new FavoritePage()))
+      .then((value) {
     print("favorite back data: $value");
   });
 }
@@ -131,7 +152,7 @@ class RandomWordsState extends State<RandomWords> {
   final _saved = new Set<WordPair>();
   @override
   Widget build(BuildContext context) {
-    return new Scaffold (
+    return new Scaffold(
       body: _buildSuggestions(),
     );
   }
@@ -156,8 +177,7 @@ class RandomWordsState extends State<RandomWords> {
             _suggestions.addAll(generateWordPairs().take(10));
           }
           return _buildRow(_suggestions[index]);
-        }
-    );
+        });
   }
 
   Widget _buildRow(WordPair pair) {
@@ -195,15 +215,16 @@ class RandomWordsState extends State<RandomWords> {
     );
   }
 
-  void toChat()  {
+  void toChat() {
 //    const platform = const MethodChannel("com.nixi.boo.main.channel");
 //    try {
 //      final int result = await platform.invokeMethod('jump_chat_page');
 //    } on PlatformException catch(e) {
 //
 //    }
-    Navigator.push(context,new MaterialPageRoute(builder: (context) =>
-    new ChatPage())).then((data) {
+    Navigator.push(context,
+            new MaterialPageRoute(builder: (context) => new ChatPage()))
+        .then((data) {
       print("account info back result: $data");
     });
   }
@@ -213,7 +234,7 @@ class RandomWordsState extends State<RandomWords> {
       new MaterialPageRoute(
         builder: (context) {
           final tiles = _saved.map(
-                (pair) {
+            (pair) {
               return new ListTile(
                 title: new Text(
                   pair.asPascalCase,
@@ -222,12 +243,10 @@ class RandomWordsState extends State<RandomWords> {
               );
             },
           );
-          final divided = ListTile
-              .divideTiles(
+          final divided = ListTile.divideTiles(
             context: context,
             tiles: tiles,
-          )
-              .toList();
+          ).toList();
 
           return new Scaffold(
             appBar: new AppBar(
@@ -247,11 +266,80 @@ class RandomWords extends StatefulWidget {
 }
 
 class SearchWidget extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-    return IconButton(icon: Icon(Icons.search),onPressed: () {
-      Scaffold.of(context).showSnackBar(new SnackBar(content: new Text("搜索功能后面添加")));
-    });
+    return IconButton(
+        icon: Icon(Icons.search),
+        onPressed: () {
+          final RenderBox button = context.findRenderObject();
+          final RenderBox overlay =
+              Overlay.of(context).context.findRenderObject();
+          final RelativeRect position = RelativeRect.fromRect(
+            Rect.fromPoints(
+              button.localToGlobal(Offset(0, 0), ancestor: overlay),
+              button.localToGlobal(button.size.bottomRight(Offset.zero),
+                  ancestor: overlay),
+            ),
+            Offset.zero & overlay.size,
+          );
+          PopupMenuButton pop = _pop(context);
+          showMenu(
+            context: context,
+            items: pop.itemBuilder(context),
+            position: position,
+          ).then((value) {
+            if (pop.onSelected != null) pop.onSelected(value);
+          });
+        });
   }
+}
+
+enum MenuTypes { A, B, C, D }
+PopupMenuButton _pop(BuildContext context) {
+  return PopupMenuButton(
+    onSelected: (value) {
+      print("click index:$value");
+      if (value == MenuTypes.A.index) {
+        Scaffold.of(context).showSnackBar(SnackBar(
+            content: Text(
+          "click A menu",
+        )));
+      } else if (value == MenuTypes.B.index) {
+        Scaffold.of(context).showSnackBar(SnackBar(
+            content: Text(
+          "click B menu",
+        )));
+      } else if (value == MenuTypes.C.index) {
+        Scaffold.of(context).showSnackBar(SnackBar(
+            content: Text(
+          "click C menu",
+        )));
+      } else if (value == MenuTypes.D.index) {
+        Scaffold.of(context).showSnackBar(SnackBar(
+            content: Text(
+          "click D menu",
+        )));
+      }
+    },
+    itemBuilder: (context) {
+      return [
+        PopupMenuItem(
+          value: MenuTypes.A.index,
+          child: Text("A"),
+        ),
+        PopupMenuItem(
+          value: MenuTypes.B.index,
+          child: Text("B"),
+        ),
+        PopupMenuItem(
+          value: MenuTypes.C.index,
+          child: Text("C"),
+        ),
+        PopupMenuItem(
+          value: MenuTypes.D.index,
+          child: Text("D"),
+        )
+      ];
+    },
+  );
 }

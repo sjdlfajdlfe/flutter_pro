@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
+      debugShowCheckedModeBanner: false,
       localizationsDelegates: [
         I18n.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -32,4 +33,3 @@ class MyApp extends StatelessWidget {
 //    DbHelper.getInstace().queryUser(userName)
 //  }
 //}
-
