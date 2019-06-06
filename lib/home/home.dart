@@ -11,6 +11,7 @@ import 'dart:async';
 
 class MyHomePage extends StatelessWidget {
   var color = TextStyle(color: Colors.white);
+  var code = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559738056100&di=3e8599cc90b96303cfab19bad244c693&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F07c6686e680086ee3c92eb48e10df3325832fac568d-uvzROb_fw658';
   var avatar = 'http://sandbox-ugc.boochat.cn/avatar/2019/01/19/14/178d257b-386c-4a5a-b312-bcca13e086e1.png';
   var bgImage = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559568860847&di=ccc79e16aa27e4f3f9cf659a6eefa99d&imgtype=0&src=http%3A%2F%2Ftc.sinaimg.cn%2Fmaxwidth.2048%2Ftc.service.weibo.com%2Fp%2Fimage_youjuke_com%2Fd6cda9b760bee1824645a825a1285edc.jpg';
   @override
@@ -49,6 +50,12 @@ class MyHomePage extends StatelessWidget {
                           image: NetworkImage(bgImage)
                       )
                   ),
+                  onDetailsPressed: () {
+                      print("onDetailsPressed");
+                  },
+                  otherAccountsPictures: <Widget>[new InkWell(child: Image.asset("images/add_icon_code.png"),onTap: () {
+                      print("jump scan code");
+                  },)],
                 ),
                 ListTile(title: Text('我喜欢的'), trailing: Icon(Icons.favorite),onTap: () {
                   //Scaffold.of(context).showSnackBar(new SnackBar(content: new Text("点击喜欢菜单")));
