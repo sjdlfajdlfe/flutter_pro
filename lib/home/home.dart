@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_pro/chat/chat.dart';
 import 'package:flutter_pro/account/account_Info.dart';
 import 'package:flutter_pro/fastfood/fastfood.dart';
+import 'package:flutter_pro/favorite/card.dart';
 import 'package:flutter_pro/test/page_anim.dart';
 import 'package:flutter_pro/test/container.dart';
 import 'package:flutter_pro/favorite/favorite.dart';
@@ -300,10 +301,6 @@ PopupMenuButton _pop(BuildContext context) {
     onSelected: (value) {
       print("click index:$value");
       if (value == MenuTypes.A.index) {
-        // Scaffold.of(context).showSnackBar(SnackBar(
-        //     content: Text(
-        //   "click A menu",
-        // )));
         showDialog(context: context,
             child: SimpleDialog(
           title: Text('对话框'),
@@ -319,10 +316,13 @@ PopupMenuButton _pop(BuildContext context) {
           ],
         ));
       } else if (value == MenuTypes.B.index) {
-        Scaffold.of(context).showSnackBar(SnackBar(
-            content: Text(
-          "click B menu",
-        )));
+        // Scaffold.of(context).showSnackBar(SnackBar(
+        //     content: Text(
+        //   "click B menu",
+        // )));
+        Navigator.push(context, new MaterialPageRoute(builder: (context) {
+          return CardPage();
+        }));
       } else if (value == MenuTypes.C.index) {
         Scaffold.of(context).showSnackBar(SnackBar(
             content: Text(
