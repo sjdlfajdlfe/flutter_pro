@@ -40,6 +40,10 @@ class LoginState extends State {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController controller = new TextEditingController();
+    controller.addListener(() {
+      print("input content:${controller.text} value:${controller.selection}");
+    });
     return new MaterialApp(
       title: "登录",
       home: new Scaffold(
@@ -54,8 +58,10 @@ class LoginState extends State {
             child: new Column(
               children: <Widget>[
                 TextFormField(
+                  controller: controller,
                   key: userNameKey,
-                  decoration: new InputDecoration(labelText: "请输入用户名"),
+                  decoration: new InputDecoration(
+                      labelText: "请输入用户名", prefixIcon: Icon(Icons.person)),
                   onSaved: (value) {
                     userName = value;
                     print("onsave userName:$value");
@@ -69,7 +75,8 @@ class LoginState extends State {
                 ),
                 TextFormField(
                   key: userPasswordKey,
-                  decoration: new InputDecoration(labelText: "请输入密码"),
+                  decoration: new InputDecoration(
+                      labelText: "请输入密码", prefixIcon: Icon(Icons.lock)),
                   onSaved: (value) {
                     password = value;
                     print("onsave password:$value");
@@ -89,7 +96,9 @@ class LoginState extends State {
                           login(context);
                         },
                         color: Colors.green,
-                        child: Text("登录", style: TextStyle(fontSize: 18,color: Colors.white)),
+                        child: Text("登录",
+                            style:
+                                TextStyle(fontSize: 18, color: Colors.white)),
                       ),
                     )),
               ],
