@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ContainerTest extends StatelessWidget {
+class ClipTest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -22,23 +22,23 @@ class ContainerTest extends StatelessWidget {
 class MyContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var avatar =
+        'http://sandbox-ugc.boochat.cn/avatar/2019/01/19/14/178d257b-386c-4a5a-b312-bcca13e086e1.png';
     return new Center(
-      child: new Container(
+        child: ClipPath(
+      clipper: ShapeBorderClipper(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20))),
+          textDirection: TextDirection.ltr),
+      child: Container(
+        color: Colors.brown,
         width: 300,
         height: 300,
-        decoration: BoxDecoration(
-            color: Colors.deepPurple,
-            border: Border.all(
-              color: Colors.green,
-              width: 8,
-            ),
-            borderRadius: BorderRadius.all(Radius.circular(48))),
-        child: Text(
-          "Container",
-          textAlign: TextAlign.center,
+        child: Image.network(
+          avatar,
+          fit: BoxFit.fill,
         ),
-        alignment: Alignment.center,
       ),
-    );
+    ));
   }
 }

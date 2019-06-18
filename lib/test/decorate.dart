@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ContainerTest extends StatelessWidget {
+class DecorateTest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -27,12 +27,10 @@ class MyContainer extends StatelessWidget {
         width: 300,
         height: 300,
         decoration: BoxDecoration(
-            color: Colors.deepPurple,
-            border: Border.all(
-              color: Colors.green,
-              width: 8,
-            ),
-            borderRadius: BorderRadius.all(Radius.circular(48))),
+            gradient: RadialGradient(
+                center: Alignment(0, 0),
+                radius: 0.5,
+                colors: [Colors.red, Colors.black, Colors.blue, Colors.brown])),
         child: Text(
           "Container",
           textAlign: TextAlign.center,

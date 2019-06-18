@@ -8,6 +8,9 @@ import 'package:flutter_pro/favorite/card.dart';
 import 'package:flutter_pro/test/page_anim.dart';
 import 'package:flutter_pro/test/container.dart';
 import 'package:flutter_pro/favorite/favorite.dart';
+import 'package:flutter_pro/test/decorate.dart';
+import 'package:flutter_pro/test/clip.dart';
+import 'package:flutter_pro/test/paint.dart';
 import 'dart:async';
 
 class MyHomePage extends StatelessWidget {
@@ -177,13 +180,15 @@ class RandomWordsState extends State<RandomWords> {
             // ...接着再生成10个单词对，然后添加到建议列表
             _suggestions.addAll(generateWordPairs().take(10));
           }
-          return _buildRow(_suggestions[index]);
+          return _buildRow(_suggestions,_suggestions[index]);
         });
   }
 
-  Widget _buildRow(WordPair pair) {
+  Widget _buildRow(_suggestions,WordPair pair) {
     final alreadySaved = _saved.contains(pair);
-    return new ListTile(
+    return Dismissible(key: new Key(pair.toString()),onDismissed: (direction) {
+        _suggestions.remove(pair);
+    },child: new ListTile(
       title: new Text(
         pair.asPascalCase,
         style: _biggerFont,
@@ -213,7 +218,7 @@ class RandomWordsState extends State<RandomWords> {
       onTap: () {
         toChat();
       },
-    );
+    ),);
   }
 
   void toChat() {
@@ -301,20 +306,21 @@ PopupMenuButton _pop(BuildContext context) {
     onSelected: (value) {
       print("click index:$value");
       if (value == MenuTypes.A.index) {
-        showDialog(context: context,
+        showDialog(
+            context: context,
             child: SimpleDialog(
-          title: Text('对话框'),
-          children: <Widget>[
-            SimpleDialogOption(
-              onPressed: () {},
-              child: Text('第一行信息'),
-            ),
-            SimpleDialogOption(
-              onPressed: () {},
-              child: Text('第二行信息'),
-            )
-          ],
-        ));
+              title: Text('对话框'),
+              children: <Widget>[
+                SimpleDialogOption(
+                  onPressed: () {},
+                  child: Text('第一行信息'),
+                ),
+                SimpleDialogOption(
+                  onPressed: () {},
+                  child: Text('第二行信息'),
+                )
+              ],
+            ));
       } else if (value == MenuTypes.B.index) {
         // Scaffold.of(context).showSnackBar(SnackBar(
         //     content: Text(
@@ -324,10 +330,42 @@ PopupMenuButton _pop(BuildContext context) {
           return CardPage();
         }));
       } else if (value == MenuTypes.C.index) {
-        Scaffold.of(context).showSnackBar(SnackBar(
-            content: Text(
-          "click C menu",
-        )));
+        showDialog(
+            context: context,
+            child: new AlertDialog(
+              title: Text('Dialog'),
+              content: SizedBox(
+                height: 100,
+                child: SingleChildScrollView(
+                  child: ListBody(
+                    children: <Widget>[
+                      Text('Delete'),
+                      Text('Copy'),
+                      Text('Delete'),
+                      Text('Copy'),
+                      Text('Delete'),
+                      Text('Copy'),
+                      Text('Delete'),
+                      Text('Copy'),
+                    ],
+                  ),
+                ),
+              ),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text('OK'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+                FlatButton(
+                  child: Text('Cancel'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                )
+              ],
+            ));
       } else if (value == MenuTypes.D.index) {
         Scaffold.of(context).showSnackBar(SnackBar(
             content: Text(
