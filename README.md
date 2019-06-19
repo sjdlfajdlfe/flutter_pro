@@ -1,16 +1,5 @@
-# flutter_pro
 
-A new Flutter application.
+官网：https://flutter.dev/docs/development/tools/sdk/releases?tab=macos#macos
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+学习dart 链接：http://dart.goodev.org/guides/language/language-tour#comments
+中文flutter 网站： 官方中文网：https://flutterchina.club/bootstrap-into-dart/ 基础控件使用：https://blog.csdn.net/kangshaojun888/article/details/86702008 开源库：https://pub.dev/flutter
